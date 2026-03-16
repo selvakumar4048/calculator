@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        section{
+
+            height: 70vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        section>div{
+            background-color: rgba(0, 255, 255, 0.551);
+            padding: 0 30px;
+            border-radius: 10px;
+        }
+        .btn{
+            display: grid;
+            grid-template-columns: 3rem 3rem 3rem 3rem;
+            grid-template-rows: 3rem 3rem 3rem 3rem 3rem;
+            row-gap: 3px;
+            column-gap: 3px;
+            margin-top: 10px;
+            justify-content: center;
+           
+            
+        }
+
+        .btn button{
+            background-color: rgb(238, 79, 79);
+
+            color:white;
+            border: 1px solid black;
+            border-radius: 10px;
+
+        }
+
+        .btn button:hover{
+            background-color: rgb(240, 0, 0);
+        }
+
+        .input-box p{
+            text-align: center;
+        }
+
+        .input-box input{
+            border: none;
+            padding: 6px 10px;
+            width: 90%;
+
+        }
+
+        #warning{
+            color: red;
+            width: 16rem;
+        }
+
+        .input-box{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #answer{
+            font-size: 30px;
+            color: green;
+            animation: ans 1s;
+            font-weight: bolder;
+        }
+
+        @keyframes ans{
+            0%{
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            100%{
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center; margin-top: 4rem;">Calculator</h1>
+    <section>
+        <div>
+            <div class="input-box">
+                <p id="answer">0</p>
+                <input type="text" id="inp-field">
+            </div>
+            <div class="btn">
+                <button onclick="o_brack()">(</button>
+                <button onclick="c_brack()">) </button>
+                <button onclick="cle()">Clear</button>
+                <button onclick="mod()">%</button>
+                <button onclick="a1()">1</button>
+                <button onclick="a2()">2</button>
+                <button onclick="a3()">3</button>
+                <button onclick="div()">/</button>
+                <button onclick="a4()">4</button>
+                <button onclick="a5()">5</button>
+                <button onclick="a6()">6</button>
+                <button onclick="mul()">*</button>
+                <button onclick="a7()">7</button>
+                <button onclick="a8()">8</button>
+                <button onclick="a9()">9</button>
+                <button onclick="sub()">-</button>
+                <button onclick="del()">delete</button>
+                <button onclick="a0()">0</button>
+                <button onclick="equ()">=</button>
+                <button onclick="add()">+</button>
+            </div>
+            <p id="warning" style="text-align: center;"></p>
+        </div>
+    </section>
+
+    <script>
+        let inp=document.getElementById("inp-field");
+        let warn=document.getElementById("warning");
+        let ans=document.getElementById("answer");
+
+        function a1(){
+            inp.value=inp.value+1;
+            warn.innerHTML="";
+        }
+        function a2(){
+            inp.value=inp.value+2;
+            warn.innerHTML="";
+        }
+        function a3(){
+            inp.value=inp.value+3;
+            warn.innerHTML="";
+        }
+        function a4(){
+            inp.value=inp.value+4;
+            warn.innerHTML="";
+        }
+        function a5(){
+            inp.value=inp.value+5;
+            warn.innerHTML="";
+        }
+        function a6(){
+            inp.value=inp.value+6;
+            warn.innerHTML="";
+        }
+        function a7(){
+            inp.value=inp.value+7;
+            warn.innerHTML="";
+        }
+        function a8(){
+            inp.value=inp.value+8;
+            warn.innerHTML="";
+        }
+        function a9(){
+            inp.value=inp.value+9;
+            warn.innerHTML="";
+        }
+        function a0(){
+            inp.value=inp.value+0;
+            warn.innerHTML="";
+        }
+
+        function add(){
+            if(inp.value==""){
+                warn.innerHTML="Enter Value before use an Operator"
+            }
+            else{
+                if(["+","-","*","/","%"].includes(inp.value[inp.value.length-1])){
+                    warn.innerHTML="Not come Two arithmetic Operators at the same Time";
+                }
+                else{
+                    inp.value+="+";
+                    warn.innerHTML="";
+                }
+                    
+            }
+        }
+
+        function sub(){
+            if(inp.value==""){
+                warn.innerHTML="Enter Value before use an Operator"
+            }
+            else{
+                if(["+","-","*","/","%"].includes(inp.value[inp.value.length-1])){
+                    warn.innerHTML="Not come Two arithmetic Operators at the same Time";
+                }
+                else{
+                    inp.value+="-";
+                    warn.innerHTML="";
+                }
+            }
+        }
+
+        function mul(){
+            if(inp.value==""){
+                warn.innerHTML="Enter Value before use an Operator"
+            }
+            else{
+                if(["+","-","*","/","%"].includes(inp.value[inp.value.length-1])){
+                    warn.innerHTML="Not come Two arithmetic Operators at the same Time";
+                }
+                else{
+                    inp.value+="*";
+                    warn.innerHTML="";
+                }
+            }
+        }
+
+        function div(){
+            if(inp.value==""){
+                warn.innerHTML="Enter Value before use an Operator"
+            }
+            else{
+                if(["+","-","*","/","%"].includes(inp.value[inp.value.length-1])){
+                    warn.innerHTML="Not come Two arithmetic Operators at the same Time";
+                }
+                else{
+                    inp.value+="/";
+                    warn.innerHTML="";
+                }
+            }
+        }
+
+        function mod(){
+            if(inp.value==""){
+                warn.innerHTML="Enter Value before use an Operator"
+            }
+            else{
+                if(["+","-","*","/","%"].includes(inp.value[inp.value.length-1])){
+                    warn.innerHTML="Not come Two arithmetic Operators at the same Time";
+                }
+                else{
+                    inp.value+="%";
+                    warn.innerHTML="";
+                }
+            }
+                
+        }
+
+        function o_brack(){
+            inp.value=inp.value+"(";
+        }
+
+        function c_brack(){
+            inp.value=inp.value+")";
+        }
+       
+        function cle(){
+            inp.value="";
+            ans.innerHTML=0;
+        }
+
+        function del(){
+            inp.value=inp.value.slice(0,-1);
+        }
+        
+        function equ(){
+            if(inp.value==""){
+                warn.innerHTML="Enter Values"
+            }
+            else{
+                ans.innerHTML=eval(inp.value);
+            }
+           
+            ans.style.animation="none";
+            ans.offsetHeight;
+            ans.style.animation="ans 1s";
+        }
+        
+    </script>
+</body>
+</html>
